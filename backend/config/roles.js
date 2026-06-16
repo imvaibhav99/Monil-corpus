@@ -1,0 +1,58 @@
+// Static role -> rights map (boilerplate pattern).
+// Rights are arbitrary strings; routes declare which rights they require.
+const allRoles = {
+  CLIENT: ['contractor.search', 'contractor.profile.view.public', 'contact.reveal', 'job.create', 'job.list.own', 'job.view.own', 'job.edit.own'],
+  CONTRACTOR: [
+    'contractor.profile.edit.own',
+    'contractor.search',
+    'contractor.profile.view.public',
+    'document.upload',
+    'lead.view',
+    'lead.contact',
+  ],
+  ADMIN: [
+    'getUsers',
+    'manageUsers',
+    'contractor.search',
+    'contractor.profile.view.public',
+    'contractor.profile.edit.any',
+    'category.manage',
+    'city.manage',
+    'document.verify',
+    'review.moderate',
+    'featured.assign',
+    'settings.edit',
+    'analytics.view',
+    'feature_flag.toggle',
+    'audit.view',
+    'user.list',
+    'user.ban',
+    'contact.reveal',
+  ],
+  SUPER_ADMIN: [
+    'getUsers',
+    'manageUsers',
+    'deleteUsers',
+    'manageAdmins',
+    'contractor.search',
+    'contractor.profile.view.public',
+    'contractor.profile.edit.any',
+    'category.manage',
+    'city.manage',
+    'document.verify',
+    'review.moderate',
+    'featured.assign',
+    'settings.edit',
+    'analytics.view',
+    'feature_flag.toggle',
+    'audit.view',
+    'user.list',
+    'user.ban',
+    'user.delete',
+    'admin.create',
+    'contact.reveal',
+  ],
+};
+
+export const roles = Object.keys(allRoles);
+export const roleRights = new Map(Object.entries(allRoles));
